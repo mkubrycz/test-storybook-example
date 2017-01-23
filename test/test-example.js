@@ -1,10 +1,12 @@
 import { Selector } from 'testcafe';
 
-fixture `Storybook`
-    .page `http://dockerhost:9001/`;
+const helloButton = Selector("button").withText("Hello Button");
 
-test('Collapse', async t => {
+fixture `Storybook`
+    .page `http://localhost:9001/`;
+
+test('Storybook example', async t => {
     await t
-        .click(menu.componentCollapse)
-        .wait(5000);
+        .switchToIframe("#storybook-preview-iframe")
+        .click(helloButton);
 });
